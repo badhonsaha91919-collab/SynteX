@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title> SynteX Drift </title>
+<link rel="icon" type="image/jpeg" href="snytex_img.jpg">
+<meta name="description" content="BadHon SahA — official social hub.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#030303;--text:#f5f5f5;--muted:#898989;--line:rgba(255,255,255,.1)}
+body{min-height:100vh;background:#030303;color:var(--text);font-family:Inter,Arial,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.bg{position:fixed;inset:-20%;z-index:-2;background:radial-gradient(circle at 50% 0%,#3a3a3a 0,transparent 25%),radial-gradient(circle at 10% 65%,#171717 0,transparent 25%),radial-gradient(circle at 90% 55%,#141414 0,transparent 25%);filter:blur(30px);animation:drift 14s ease-in-out infinite alternate}
+@keyframes drift{from{transform:scale(1) translate3d(-1%,0,0)}to{transform:scale(1.12) translate3d(1%,2%,0)}}
+#loader{position:fixed;inset:0;background:#030303;z-index:9999;display:grid;place-items:center;transition:opacity .7s,visibility .7s}
+#loader.hide{opacity:0;visibility:hidden}
+.load{text-align:center}.loadmark{width:54px;height:54px;border:2px solid #292929;border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite;margin:auto}
+.load p{margin-top:15px;font-size:10px;letter-spacing:4px;color:#777;text-transform:uppercase}
+@keyframes spin{to{transform:rotate(360deg)}}
+.wrap{width:min(720px,calc(100% - 28px));margin:auto;padding:28px 0 55px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:34px}
+.brand{font-weight:900;letter-spacing:4px;font-size:12px}.status{border:1px solid var(--line);border-radius:99px;padding:7px 10px;color:#999;font-size:10px;background:#0b0b0b}
+.status i{display:inline-block;width:6px;height:6px;background:#fff;border-radius:50%;margin-right:6px;box-shadow:0 0 10px #fff}
+.hero{text-align:center;padding-bottom:32px}
+.bat{width:118px;height:118px;margin:0 auto 20px;position:relative;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 25%,#555,#111 58%,#050505);border:1px solid #333;box-shadow:0 0 0 8px #111,0 22px 70px rgba(255,255,255,.09);overflow:hidden}
+.bat:before{content:"";position:absolute;width:68px;height:42px;background:#050505;clip-path:polygon(0 28%,18% 39%,29% 0,50% 25%,71% 0,82% 39%,100% 28%,82% 100%,18% 100%);filter:drop-shadow(0 0 4px #777)}
+.bat:after{content:"";position:absolute;width:19px;height:10px;background:#eee;clip-path:polygon(0 0,100% 0,78% 100%,22% 100%);opacity:.85}
+h1{font-size:42px;letter-spacing:-2.5px;line-height:1.05}.handle{font-size:13px;color:#777;margin-top:8px}
+.bio{color:#aaa;font-size:13px;line-height:1.7;margin:14px auto 0;max-width:480px}
+.tags{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;margin-top:18px}.tag{font-size:9px;letter-spacing:1.7px;color:#999;border:1px solid var(--line);padding:8px 10px;border-radius:99px;background:#0b0b0b}
+.label{font-size:9px;color:#5e5e5e;letter-spacing:3px;text-transform:uppercase;margin:8px 3px 12px}
+.links{display:grid;gap:10px}
+.card{position:relative;display:flex;align-items:center;gap:14px;padding:14px;border-radius:18px;border:1px solid var(--line);background:linear-gradient(135deg,rgba(23,23,23,.88),rgba(8,8,8,.82));backdrop-filter:blur(20px);text-decoration:none;color:#fff;overflow:hidden;transition:.25s}
+.card:hover{transform:translateY(-3px);border-color:#3c3c3c;background:#151515}
+.card:before{content:"";position:absolute;top:0;left:-70%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);transform:skewX(-20deg);transition:.65s}.card:hover:before{left:120%}
+.ico{width:48px;height:48px;flex:0 0 48px;border-radius:14px;background:#1a1a1a;border:1px solid #282828;display:grid;place-items:center;font-weight:800;font-size:18px}
+.info{flex:1;min-width:0}.name{font-size:14px;font-weight:800}.desc{font-size:10px;color:#707070;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.arrow{font-size:21px;color:#555;transition:.2s}.card:hover .arrow{color:#fff;transform:translateX(3px)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.stat{border:1px solid var(--line);background:#0b0b0b;border-radius:14px;padding:11px 6px;text-align:center}.num{font-size:15px;font-weight:800}.stat small{display:block;color:#666;font-size:8px;letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+.music{margin-top:15px;border:1px solid var(--line);border-radius:15px;background:#0a0a0a;padding:10px 12px;display:flex;align-items:center;gap:10px}
+.music button{border:0;width:34px;height:34px;border-radius:50%;background:#eee;color:#050505;font-weight:900;cursor:pointer}.music span{font-size:10px;color:#777;flex:1}.music b{font-size:9px;color:#aaa}
+footer{text-align:center;color:#444;font-size:9px;margin-top:28px;line-height:1.7}
+@media(max-width:520px){h1{font-size:34px}.bat{width:100px;height:100px}.wrap{padding-top:22px}}
+
+
+.spider-wrap{
+  position:fixed;left:0;top:0;width:58px;height:58px;
+  pointer-events:none;z-index:2; /* stays visually behind the account cards */
+  transform:translate3d(-50%,-50%,0);
+  opacity:0;transition:opacity .3s ease;
+  will-change:transform;
+}
+.spider{
+  position:absolute;left:50%;top:50%;width:28px;height:34px;
+  transform:translate(-50%,-50%);
+  filter:drop-shadow(0 3px 9px rgba(120,0,0,.35));
+}
+.spider:before{
+  content:"";position:absolute;left:5px;top:7px;width:18px;height:23px;
+  border-radius:48% 48% 42% 42%;
+  background:linear-gradient(145deg,#fff 0 12%,#222 13% 58%,#090909 59%);
+  border:1px solid rgba(255,255,255,.28);
+  box-shadow:inset -3px -4px 7px rgba(120,0,0,.5);
+}
+.spider:after{
+  content:"";position:absolute;left:12px;top:17px;width:5px;height:11px;
+  background:#8f0000;clip-path:polygon(50% 0,100% 32%,75% 100%,50% 78%,25% 100%,0 32%);
+  filter:drop-shadow(0 0 3px rgba(255,0,0,.55));
+}
+.eye{position:absolute;z-index:3;top:11px;width:5px;height:7px;background:#fff;border-radius:50%;box-shadow:0 0 5px rgba(255,255,255,.8)}
+.e1{left:8px}.e2{right:8px}
+.leg{position:absolute;z-index:-1;width:20px;height:2px;border-radius:4px;background:linear-gradient(90deg,#777,#9a0000);transform-origin:right center;box-shadow:0 0 3px rgba(120,0,0,.35)}
+.l1{left:-9px;top:8px;transform:rotate(22deg)}.l2{left:-11px;top:13px;transform:rotate(3deg)}
+.l3{left:-10px;top:19px;transform:rotate(-18deg)}.l4{left:-7px;top:25px;transform:rotate(-34deg)}
+.l5{right:-9px;top:8px;transform-origin:left center;transform:rotate(-22deg)}.l6{right:-11px;top:13px;transform-origin:left center;transform:rotate(-3deg)}
+.l7{right:-10px;top:19px;transform-origin:left center;transform:rotate(18deg)}.l8{right:-7px;top:25px;transform-origin:left center;transform:rotate(34deg)}
+@keyframes spiderFloat{0%,100%{margin-top:0}50%{margin-top:-3px}}
+.spider{animation:spiderFloat 2.8s ease-in-out infinite}
+@media (pointer:fine){body:hover .spider-wrap{opacity:.95}}
+@media (pointer:coarse){.spider-wrap{display:none}}
+
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="spider-wrap" id="spiderWrap" aria-hidden="true">
+  <div class="spider">
+    <span class="eye e1"></span><span class="eye e2"></span>
+    <i class="leg l1"></i><i class="leg l2"></i><i class="leg l3"></i><i class="leg l4"></i>
+    <i class="leg l5"></i><i class="leg l6"></i><i class="leg l7"></i><i class="leg l8"></i>
+  </div>
+</div>
+
+<div id="loader"><div class="load"><div class="loadmark"></div><p>Loading experience</p></div></div>
+
+<main class="wrap">
+  <div class="top"><div class="brand">SYNTEX</div><div class="status"><i></i>OFFICIAL HUB</div></div>
+
+  <section class="hero">
+    <div class="bat" aria-label="Batman style profile emblem"></div>
+    <h1>BadHon SahA</h1>
+    <div class="handle">@syntex</div>
+    <p class="bio">Creator • Designer • Digital Enthusiast<br>My official social world, all in one place.</p>
+    <div class="tags"><span class="tag">SOCIAL</span><span class="tag">CREATIVE</span><span class="tag">DIGITAL</span></div>
+  </section>
+
+  <div class="label">Connect with me</div>
+  <section class="links">
+    <a class="card" href="https://www.instagram.com/b4dh0n_07/" target="_blank" rel="noopener"><div class="ico">◎</div><div class="info"><div class="name">Instagram</div><div class="desc">@b4dh0n_07 · Photos, reels & updates</div></div><div class="arrow">›</div></a>
+    <a class="card" href="https://x.com/mr_badh0n_07" target="_blank" rel="noopener"><div class="ico">𝕏</div><div class="info"><div class="name">X</div><div class="desc">@mr_badh0n_07 · Thoughts & updates</div></div><div class="arrow">›</div></a>
+    <a class="card" href="https://www.facebook.com/share/17wHcSNhwN/" target="_blank" rel="noopener"><div class="ico">f</div><div class="info"><div class="name">Facebook</div><div class="desc">Connect with me on Facebook</div></div><div class="arrow">›</div></a>
+    <a class="card" href="https://www.youtube.com/@badhon_077" target="_blank" rel="noopener"><div class="ico">▶</div><div class="info"><div class="name">YouTube</div><div class="desc">@badhon_077 · Videos & content</div></div><div class="arrow">›</div></a>
+  </section>
+
+  <footer><b>BADHON</b><br>© 2026 · All official links in one place</footer>
+
+    </footer >
+  
+</main>
+
+
+<script>
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hide'),900));
+
+const glow = document.getElementById('cursorGlow');
+let gx = 0, gy = 0, tx = 0, ty = 0;
+window.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; });
+function animateGlow(){
+  gx += (tx-gx)*0.14; gy += (ty-gy)*0.14;
+  glow.style.left = gx + 'px'; glow.style.top = gy + 'px';
+  requestAnimationFrame(animateGlow);
+}
+animateGlow();
+</script>
+</body>
+</html>
